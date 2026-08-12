@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Localizr — 한국어 앱을 미국인이 만든 것처럼 자연스러운 영어로</title>
+<meta name="description" content="구글 번역기가 아닌, 현지인이 실제로 쓰는 영어로 앱 문구를 바꿔주는 AI 현지화 도구. 버튼·에러 메시지·앱스토어 리스팅까지, 왜 그렇게 바뀌었는지 설명과 함께.">
+<style>
+  :root{
+    --bg:#0b0f1a; --card:#121827; --line:#1f2937; --text:#e5e7eb; --muted:#9ca3af;
+    --accent:#6366f1; --accent2:#8b5cf6; --good:#34d399; --bad:#f87171;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  /* NAV */
+  nav{position:sticky;top:0;background:rgba(11,15,26,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .logo{font-weight:800;font-size:18px;letter-spacing:-.5px}
+  .logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  nav a.btn{padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px}
+  /* HERO */
+  header{padding:72px 0 48px;text-align:center;background:radial-gradient(600px 300px at 50% -50px,rgba(99,102,241,.25),transparent)}
+  .badge{display:inline-block;padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13px;margin-bottom:20px}
+  h1{font-size:clamp(28px,5vw,44px);line-height:1.25;letter-spacing:-1px;margin-bottom:16px}
+  h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:620px;margin:0 auto 32px}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;font-size:16px;transition:transform .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 24px rgba(99,102,241,.35)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--card)}
+  .hero-note{color:var(--muted);font-size:13px;margin-top:14px}
+  /* SECTION */
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-size:clamp(22px,3.5vw,30px);letter-spacing:-.5px;margin-bottom:10px;text-align:center}
+  .sec-sub{color:var(--muted);text-align:center;max-width:600px;margin:0 auto 36px;font-size:15px}
+  /* DEMO TABLE */
+  .demo-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:760px;margin:0 auto}
+  .demo-head{display:flex;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:13px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#3b4354}
+  .demo-table{width:100%;border-collapse:collapse;font-size:14px}
+  .demo-table th,.demo-table td{padding:14px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  .demo-table th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  .demo-table tr:last-child td{border-bottom:none}
+  .bad{color:var(--bad)}
+  .good{color:var(--good)}
+  .why{display:block;color:var(--muted);font-size:12px;margin-top:4px;line-height:1.5}
+  @media(max-width:640px){ .demo-table{font-size:12.5px} .demo-table th,.demo-table td{padding:10px 10px} }
+  /* FEATURES */
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:860px;margin:0 auto}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .feat .ic{font-size:26px;margin-bottom:12px}
+  .feat h3{font-size:17px;margin-bottom:8px}
+  .feat p{color:var(--muted);font-size:14px}
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:860px;margin:0 auto}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;position:relative}
+  .step .num{position:absolute;top:-14px;left:20px;width:28px;height:28px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff}
+  .step h3{font-size:16px;margin:8px 0 6px}
+  .step p{color:var(--muted);font-size:14px}
+  /* PRICING / CTA */
+  .cta-box{background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.15));border:1px solid var(--line);border-radius:16px;padding:40px 24px;text-align:center;max-width:640px;margin:0 auto}
+  .cta-box h2{margin-bottom:10px}
+  .cta-box p{color:var(--muted);margin-bottom:24px}
+  .perk{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;color:var(--good);font-size:13px;font-weight:600;margin:0 4px 8px}
+  /* FOOTER */
+  footer{padding:32px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Local<span>izr</span></div>
+    <a class="btn btn-ghost" href="#beta">무료 베타 신청</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="badge">🇰🇷 한국어 앱 → 🇺🇸 자연스러운 영어 · 베타 참여자 모집 중</span>
+    <h1>한국어 앱을,<br>미국인이 만든 것처럼<br><span class="grad">자연스러운 영어</span>로</h1>
+    <p class="sub">구글 번역기로 내놓은 영어 버전, 미국 사용자가 "외국산 앱이네" 하고 꺼버리지 않나요? Localizr가 버튼·에러 메시지·앱스토어 리스팅을 현지인이 실제로 쓰는 영어로 바꿔주고, <b>왜 그렇게 바뀌었는지까지 설명</b>해드립니다.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#beta">무료 베타 신청하기</a>
+      <a class="btn btn-ghost" href="#demo">실제 예시 보기 ↓</a>
+    </div>
+    <p class="hero-note">베타 참여자는 정식 출시 후 <b>평생 50% 할인</b> 🎁</p>
+  </div>
+</header>
+
+<section id="demo">
+  <div class="wrap">
+    <h2>번역이 틀린 게 아니라, <u>사람이 안 쓰는 말</u>이 문제입니다</h2>
+    <p class="sec-sub">아래 왼쪽은 구글 번역기, 오른쪽은 Localizr가 제안하는 문구입니다. 차이가 보이시나요?</p>
+    <div class="demo-card">
+      <div class="demo-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp; 실제 앱 화면 번역 예시</div>
+      <table class="demo-table">
+        <tr><th style="width:24%">화면</th><th style="width:38%">구글 번역기</th><th>Localizr (자연스러운 영어)</th></tr>
+        <tr>
+          <td>로딩 화면</td>
+          <td class="bad">"Loading book..."</td>
+          <td class="good">"Loading your library…"</td>
+        </tr>
+        <tr>
+          <td>저장 완료</td>
+          <td class="bad">"Saved"</td>
+          <td class="good">"Changes saved"<span class="why">왜? 저장을 알리는 문구는 목적어를 붙여야 안심이 됩니다.</span></td>
+        </tr>
+        <tr>
+          <td>에러 메시지</td>
+          <td class="bad">"Cannot connect to server. Please try again later."</td>
+          <td class="good">"We couldn't reach our servers. Please try again in a moment."<span class="why">왜? 미국 앱은 "We" 주어를 써서 사용자와 같은 편임을 보여줍니다.</span></td>
+        </tr>
+        <tr>
+          <td>확인 버튼</td>
+          <td class="bad">"Confirmation"</td>
+          <td class="good">"Got it"<span class="why">왜? 확인 버튼은 "OK"보다 친근한 "Got it"이 더 많이 쓰입니다.</span></td>
+        </tr>
+        <tr>
+          <td>다음 단계 버튼</td>
+          <td class="bad">"Next"</td>
+          <td class="good">"Continue"<span class="why">왜? 결제·가입 흐름에서는 Next보다 Continue가 전환율이 높습니다.</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>구글 번역기와 다른 점 3가지</h2>
+    <p class="sec-sub">단순 번역이 아니라 "현지인의 눈"으로 보는 도구입니다</p>
+    <div class="feats">
+      <div class="feat">
+        <div class="ic">🎯</div>
+        <h3>맥락을 안다</h3>
+        <p>"이 문구는 어느 화면의 버튼인가", "결제 단계인가"를 알면 번역이 달라집니다. 같은 한국어도 상황에 따라 다른 영어가 됩니다.</p>
+      </div>
+      <div class="feat">
+        <div class="ic">📏</div>
+        <h3>문자 수 제한 반영</h3>
+        <p>버튼은 15자, 앱스토어 제목은 30자. 잘리는 걸 알면서 번역해주는 도구는 거의 없습니다. Localizr는 제한 안에서 자연스러운 문구를 제안합니다.</p>
+      </div>
+      <div class="feat">
+        <div class="ic">💡</div>
+        <h3>왜 그런지 알려준다</h3>
+        <p>모든 제안에 한국어 설명이 붙습니다. 그래서 개발자가 그냥 복붙하는 게 아니라 "이제부터는 영어를 스스로 판단"할 수 있게 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>3단계면 끝</h2>
+    <p class="sec-sub">회원가입 복잡한 과정 없이, 붙여넣고 결과 받기만 하면 됩니다</p>
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <h3>앱 문구 붙여넣기</h3>
+        <p>JSON 파일이나 문구 목록을 그대로 붙여넣습니다. 100개든 1,000개든 상관없습니다.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h3>컨텍스트 선택</h3>
+        <p>"버튼 / 에러 / 안내 문구 / 앱스토어 리스팅" 중 어디에 쓰이는지 고르기만 하면 됩니다.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h3>자연스러운 영어 받기</h3>
+        <p>현지인 눈에 자연스러운 번역 + 왜 그렇게 바뀌었는지 한국어 설명을 받고, JSON으로 바로 내보냅니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="beta">
+  <div class="wrap">
+    <div class="cta-box">
+      <h2>베타 참여자 모집 중</h2>
+      <p>베타 기간 동안 <b>전 기능 무료</b>로 사용하실 수 있습니다. 참여자분들의 앱을 직접 현지화해드리며 피드백을 받습니다.</p>
+      <div>
+        <span class="perk">🎁 베타 참여 = 평생 50% 할인</span>
+        <span class="perk">🚀 정식 출시 예정가 월 $19</span>
+      </div>
+      <div class="cta-row" style="margin-top:20px">
+        <a class="btn btn-primary" href="mailto:hello@localizr.app?subject=%5BLocalizr%20%EB%B2%A0%ED%83%80%20%EC%8B%A0%EC%B2%AD%5D%20%ED%9A%8C%EC%82%AC%EB%AA%85%2F%EC%95%B1%EC%9D%B4%EB%A6%84%3A%20%EB%B0%8F%20%EC%9D%B4%EB%A9%94%EC%9D%BC%3A&body=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94.%20Localizr%20%EB%B2%A0%ED%83%80%EB%A5%BC%20%EC%8B%A0%EC%B2%AD%ED%95%A9%EB%8B%88%EB%8B%A4.%0A%0A%ED%9A%8C%EC%82%AC%EB%AA%85%2F%EC%95%B1%EC%9D%B4%EB%A6%84%3A%20%0A%EC%9D%B4%EB%A9%94%EC%9D%BC%3A%20%0A%EC%98%81%EC%96%B4%EA%B6%8C%20%EC%B6%9C%EC%8B%9C%20%EC%98%88%EC%A0%95%20%EC%97%AC%EB%B6%80%3A%20%0A">베타 신청하기 (이메일 보내기)</a>
+      </div>
+      <p class="hero-note" style="margin-top:14px">이메일 한 통이면 끝 — 앱 문구를 보내주시면 직접 현지화해서 보내드립니다</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Localizr · 한국어 앱 현지화 에이전트 — 베타 중<br>
+    문의: <a href="mailto:hello@localizr.app">hello@localizr.app</a>
+  </div>
+</footer>
+
+</body>
+</html>
