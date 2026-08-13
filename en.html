@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Localizr — Ship your Korean app in English native speakers actually write</title>
-<meta name="description" content="Not Google Translate English — English that native speakers actually write. Localizr rewrites your app copy (buttons, errors, App Store listings) into natural English and explains why.">
+<meta name="description" content="Not Google Translate English — English that native speakers actually write. Localizr rewrites your app copy (buttons, errors, App Store listings) into natural English, keeps terminology consistent, and explains why.">
 <style>
   :root{
     --bg:#0b0f1a; --card:#121827; --line:#1f2937; --text:#e5e7eb; --muted:#9ca3af;
@@ -24,7 +24,7 @@
   .badge{display:inline-block;padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13px;margin-bottom:20px}
   h1{font-size:clamp(28px,5vw,44px);line-height:1.25;letter-spacing:-1px;margin-bottom:16px}
   h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .sub{color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:640px;margin:0 auto 32px}
+  .sub{color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:660px;margin:0 auto 32px}
   .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .btn{display:inline-block;padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;font-size:16px;transition:transform .15s}
   .btn:hover{transform:translateY(-1px)}
@@ -33,8 +33,8 @@
   .hero-note{color:var(--muted);font-size:13px;margin-top:14px}
   section{padding:56px 0;border-top:1px solid var(--line)}
   h2{font-size:clamp(22px,3.5vw,30px);letter-spacing:-.5px;margin-bottom:10px;text-align:center}
-  .sec-sub{color:var(--muted);text-align:center;max-width:600px;margin:0 auto 36px;font-size:15px}
-  .demo-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:760px;margin:0 auto}
+  .sec-sub{color:var(--muted);text-align:center;max-width:620px;margin:0 auto 36px;font-size:15px}
+  .demo-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:780px;margin:0 auto}
   .demo-head{display:flex;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:13px}
   .dot{width:10px;height:10px;border-radius:50%;background:#3b4354}
   .demo-table{width:100%;border-collapse:collapse;font-size:14px}
@@ -44,13 +44,21 @@
   .bad{color:var(--bad)}
   .good{color:var(--good)}
   .why{display:block;color:var(--muted);font-size:12px;margin-top:4px;line-height:1.5}
+  .note{max-width:780px;margin:16px auto 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;color:var(--muted);font-size:13px;line-height:1.7}
   @media(max-width:640px){ .demo-table{font-size:12.5px} .demo-table th,.demo-table td{padding:10px 10px} }
-  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:860px;margin:0 auto}
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:880px;margin:0 auto}
   .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
   .feat .ic{font-size:26px;margin-bottom:12px}
   .feat h3{font-size:17px;margin-bottom:8px}
   .feat p{color:var(--muted);font-size:14px}
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:860px;margin:0 auto}
+  .compare{background:var(--card);border:1px solid var(--line);border-radius:16px;max-width:780px;margin:0 auto;padding:28px 28px 24px}
+  .compare .lead{color:var(--text);font-size:15px;margin-bottom:20px}
+  .compare ul{list-style:none}
+  .compare li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:14px;line-height:1.7}
+  .compare li:last-child{border-bottom:none}
+  .compare li .ic{flex:none;font-size:18px}
+  .compare b{color:var(--text)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:880px;margin:0 auto}
   .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;position:relative}
   .step .num{position:absolute;top:-14px;left:20px;width:28px;height:28px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff}
   .step h3{font-size:16px;margin:8px 0 6px}
@@ -79,7 +87,7 @@
   <div class="wrap">
     <span class="badge">🇰🇷 Korean apps → 🇺🇸 Natural English · Beta signups open</span>
     <h1>Your Korean app, in English<br>a native speaker would <span class="grad">actually write</span></h1>
-    <p class="sub">Shipping a Korean app in English and it feels… off? Not wrong, just not how anyone actually talks. Localizr rewrites your buttons, errors, and App Store listings into natural English — and explains <b>why</b> each change was made.</p>
+    <p class="sub">Google Translate gives you grammatically correct sentences — that nobody actually says. Localizr rewrites your buttons, errors, and App Store listings into English a native speaker would write, and keeps your <b>terminology consistent</b> across the whole app. Every suggestion comes with a note explaining why.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#beta">Join the free beta</a>
       <a class="btn btn-ghost" href="#demo">See real examples ↓</a>
@@ -91,50 +99,46 @@
 <section id="demo">
   <div class="wrap">
     <h2>It's not wrong translation —<br>it's language <u>nobody actually uses</u></h2>
-    <p class="sec-sub">Left: Google Translate. Right: what Localizr proposes. Spot the difference?</p>
+    <p class="sec-sub">Left: Google Translate. Right: what Localizr proposes. These are patterns you see in real Korean apps every day.</p>
     <div class="demo-card">
       <div class="demo-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp; Real app copy, before &amp; after</div>
       <table class="demo-table">
         <tr><th style="width:24%">Screen</th><th style="width:38%">Google Translate</th><th>Localizr (natural English)</th></tr>
         <tr>
-          <td>Loading screen</td>
-          <td class="bad">"Loading book..."</td>
-          <td class="good">"Loading your library…"</td>
+          <td>Popup<br><span class="why" style="color:#6b7280">오늘 하루 보지 않기</span></td>
+          <td class="bad">"Don't see today one day"</td>
+          <td class="good">"Don't show again today"<span class="why">Why: word-for-word translation from Korean breaks the grammar. This exact pattern ships in real apps.</span></td>
         </tr>
         <tr>
-          <td>Save complete</td>
-          <td class="bad">"Saved"</td>
-          <td class="good">"Changes saved"<span class="why">Why: an object makes the confirmation feel complete and reassuring.</span></td>
+          <td>Settings screen<br><span class="why" style="color:#6b7280">설정</span></td>
+          <td class="bad">"Setting"</td>
+          <td class="good">"Settings"<span class="why">Why: English always uses the plural "Settings" for a preferences screen — the iOS &amp; Android convention.</span></td>
         </tr>
         <tr>
-          <td>Error message</td>
-          <td class="bad">"Cannot connect to server. Please try again later."</td>
-          <td class="good">"We couldn't reach our servers. Please try again in a moment."<span class="why">Why: US apps use "we" — it puts you on the same side as the user.</span></td>
+          <td>Login checkbox<br><span class="why" style="color:#6b7280">자동 로그인</span></td>
+          <td class="bad">"Auto login"</td>
+          <td class="good">"Keep me signed in"<span class="why">Why: US apps use this phrase instead of a literal "auto login" (common on Apple &amp; Google flows).</span></td>
         </tr>
         <tr>
-          <td>Confirm button</td>
-          <td class="bad">"Confirmation"</td>
-          <td class="good">"Got it"<span class="why">Why: friendly confirmations read as "Got it" or "OK", never "Confirmation".</span></td>
-        </tr>
-        <tr>
-          <td>Next-step button</td>
-          <td class="bad">"Next"</td>
-          <td class="good">"Continue"<span class="why">Why: in checkout &amp; signup flows, "Continue" converts better than "Next".</span></td>
+          <td>Login failure<br><span class="why" style="color:#6b7280">로그인에 실패했습니다</span></td>
+          <td class="bad">"Failed to log in."</td>
+          <td class="good">"We couldn't sign you in."<span class="why">Why: consumer apps use the "we" voice to sound like they're on the user's side.</span></td>
         </tr>
       </table>
     </div>
+    <p class="note">※ Note: in a developer tool (like IntelliJ), <b>"Cannot connect to server"</b> is actually the standard. Localizr asks where your copy lives and adjusts the <b>register</b> — consumer apps and dev tools talk differently.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Three things that make it different from Google Translate</h2>
-    <p class="sec-sub">Not a translator — a tool that sees your app the way a native user does</p>
+    <h2>What makes it different from Google Translate &amp; GPT</h2>
+    <p class="sec-sub">For checking 3 sentences, GPT wins. This tool's lane is the whole app.</p>
     <div class="feats">
       <div class="feat">
         <div class="ic">🎯</div>
-        <h3>It knows the context</h3>
-        <p>Is this a button, an error, a checkout step? Same Korean sentence becomes different English depending on where it lives in your app.</p>
+        <h3>It knows context &amp; register</h3>
+        <p>Is this a button, an error, a checkout step — and is it a consumer app or a dev tool? The same Korean sentence becomes different English depending on where it lives.</p>
       </div>
       <div class="feat">
         <div class="ic">📏</div>
@@ -142,10 +146,31 @@
         <p>Buttons truncate at ~15 chars, App Store titles at 30. Localizr proposes copy that fits — most translation tools don't even try.</p>
       </div>
       <div class="feat">
+        <div class="ic">🔁</div>
+        <h3>Terminology stays consistent</h3>
+        <p>If "확인" becomes OK on one screen and Confirm on another, users notice. Localizr keeps a glossary so the same word always maps to the same English.</p>
+      </div>
+      <div class="feat">
         <div class="ic">💡</div>
         <h3>It tells you why</h3>
-        <p>Every suggestion comes with a short note explaining the change — so you're not copy-pasting blindly, you're learning the language as you go.</p>
+        <p>Every suggestion comes with a short note explaining the change — so you're not copy-pasting blindly, you're building an instinct for it.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why not just ask ChatGPT?</h2>
+    <p class="sec-sub">Honestly, for 3 strings, ChatGPT wins. This tool doesn't fight it there.</p>
+    <div class="compare">
+      <p class="lead">Where Localizr wins is the <b>whole-app workflow</b>:</p>
+      <ul>
+        <li><span class="ic">🔢</span><span><b>100 or 1,000 strings at once.</b> Paste the whole file and review everything in one pass. Checking consistency across 100 strings in a chat window is basically impossible.</span></li>
+        <li><span class="ic">🔁</span><span><b>Terminology consistency.</b> A glossary it remembers, so "확인" never drifts across screens — the same word always maps to the same English.</span></li>
+        <li><span class="ic">📏</span><span><b>Rules it remembers.</b> 15-char buttons, 30-char App Store titles, ASO keyword format. You set it once; no re-explaining every time.</span></li>
+        <li><span class="ic">👀</span><span><b>Diff review.</b> Only the changed lines are highlighted, so you see exactly what was wrong at a glance — no scrolling back through chat history to compare.</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -163,7 +188,7 @@
       <div class="step">
         <span class="num">2</span>
         <h3>Pick the context</h3>
-        <p>Is this a button, error, onboarding, or App Store listing? One click each.</p>
+        <p>Button, error, onboarding, or App Store listing — plus consumer app or dev tool. One click each.</p>
       </div>
       <div class="step">
         <span class="num">3</span>
